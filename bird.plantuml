@@ -1,0 +1,59 @@
+@startuml
+
+Class Juego
+
+Juego : +Fondo_menu
+
+Juego *-- Jugador : 1..1
+
+
+
+Class Ronda
+Ronda : -personajes
+Ronda : Contar_patos()
+Ronda : Contar_balas()
+
+Juego *-- Ronda : 1..*
+
+
+Class Puntaje 
+Puntaje : Incrementar_puntaje()
+
+Jugador *-- Puntaje : 1..1
+
+
+Interface Elementos
+Elementos : dibujar()
+
+Ronda o-- Elementos : 1..*
+
+Class Personaje
+Personaje : Animar()
+
+Class Pato 
+Pato : Volar()
+Pato : Morir()
+
+Class Perro 
+Perro : Triunfo()
+Perro : Inicio()
+
+Personaje <|-- Pato 
+Personaje <|-- Perro 
+
+Class Paisaje
+Paisaje : + Fondo_cielo
+Paisaje : + Fondo_vegetacion
+
+Elementos <|.. Personaje
+Elementos <|.. Paisaje
+
+Class Jugador
+Jugador : +disparar() 
+
+@enduml
+
+
+
+
+
